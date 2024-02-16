@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <th:block th:include="/fragment/headerFragment::import">
+    </th:block>
+</head>
+<body>
+<th:block th:include="/fragment/headerFragment::userInfo"></th:block>
+<a th:if="${currentUser==null}" href="/loginPage">Login</a><br>
+<a href="/companies">Companies</a> | <a href="/employees">Employees</a>
+<a href="/user/register">Registration</a>
+</body>
+</html>

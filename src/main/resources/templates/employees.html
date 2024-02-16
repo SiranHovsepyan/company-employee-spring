@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees Page</title>
+</head>
+<body>
+<th:block th:include="/fragment/headerFragment::userInfo"></th:block>
+Employees Page | <a href="/employees/add">Add Employee</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Picture</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Company name</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee :${employees}">
+        <td th:text="${employee.id}"></td>
+        <td>
+            <img th:if="${employee.getPicName() != null}" th:src="@{/getImage(picName=${employee.picName})}"
+                 width="40"/>
+        </td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.company.name}"></td>
+        <td><a th:href="@{'/employees/update/'+ ${employee.id}}">UPDATE</a></td>
+        <td><a th:href="@{'/employees/delete/'+ ${employee.id}}">DELETE</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
